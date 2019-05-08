@@ -156,7 +156,7 @@ public class FormCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormCliente dialog = new FormCliente(new javax.swing.JFrame(), true);
+                FormCliente dialog = new FormCliente(new javax.swing.JFrame(), true, new Cliente());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

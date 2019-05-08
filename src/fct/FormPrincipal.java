@@ -111,7 +111,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClienteActionPerformed
 
     private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
-        System.out.println(cliente.getNome());        // TODO add your handling code here:
+        System.out.println(c.getNome());        // TODO add your handling code here:
     }//GEN-LAST:event_menuProdutoActionPerformed
 
     /**
