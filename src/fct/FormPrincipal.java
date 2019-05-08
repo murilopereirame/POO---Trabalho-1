@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class FormPrincipal extends javax.swing.JFrame {
     private Cliente c = new Cliente();
+    private ProdutoImportado i = new ProdutoImportado();
     /**
      * Creates new form FormPrincipal
      */
@@ -33,7 +34,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuMenu = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenu();
         menuCliente = new javax.swing.JMenuItem();
-        menuProduto = new javax.swing.JMenuItem();
+        menuProduto = new javax.swing.JMenu();
+        menuNacional = new javax.swing.JMenuItem();
+        menuImportado = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         menuSobre = new javax.swing.JMenuItem();
 
@@ -55,13 +58,22 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         menuCadastrar.add(menuCliente);
 
-        menuProduto.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuProduto.setText("Produto");
-        menuProduto.addActionListener(new java.awt.event.ActionListener() {
+        menuProduto.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        menuNacional.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuNacional.setText("Nacional");
+        menuNacional.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProdutoActionPerformed(evt);
+                menuNacionalActionPerformed(evt);
             }
         });
+        menuProduto.add(menuNacional);
+
+        menuImportado.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuImportado.setText("Importado");
+        menuProduto.add(menuImportado);
+
         menuCadastrar.add(menuProduto);
 
         menuMenu.add(menuCadastrar);
@@ -103,16 +115,19 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
-        FormCliente form = new FormCliente(this, true, c);
+        //FormCliente form = new FormCliente(this, true, c);
+        //form.setLocationRelativeTo(null);
+        //form.setResizable(false);
+        //form.setVisible(true);
+        System.out.println(i.getCodigo());
+    }//GEN-LAST:event_menuClienteActionPerformed
+
+    private void menuNacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNacionalActionPerformed
+        FormNacional form = new FormNacional (this, true, i);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-        
-    }//GEN-LAST:event_menuClienteActionPerformed
-
-    private void menuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoActionPerformed
-        System.out.println(c.getNome());        // TODO add your handling code here:
-    }//GEN-LAST:event_menuProdutoActionPerformed
+    }//GEN-LAST:event_menuNacionalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +158,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 //new FormPrincipal().setVisible(true);
                 FormPrincipal form = new FormPrincipal();
@@ -157,8 +173,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuImportado;
     private javax.swing.JMenu menuMenu;
-    private javax.swing.JMenuItem menuProduto;
+    private javax.swing.JMenuItem menuNacional;
+    private javax.swing.JMenu menuProduto;
     private javax.swing.JMenuItem menuSobre;
     // End of variables declaration//GEN-END:variables
 }
