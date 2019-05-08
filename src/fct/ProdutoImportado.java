@@ -27,6 +27,6 @@ public class ProdutoImportado extends Produto {
 	}
 	
 	public float calcularPreco() {
-		return this.getTaxaImportacao() + this.getTaxaImposto();
+		return this.getTaxaImportacao() + this.getTaxaImposto() + this.getValor();
 	}
 }

@@ -6,26 +6,42 @@ public class Item {
 	private String descricao;
 	private float Valor;
 	private float quantidade;
+	Produto produto;
 	
-	public Item(int num) {
+	public Item(int num, Produto p) {
 		this.setNum(num);
+		this.setProduto(p);
+		this.setDescricao(this.getProduto().getDescricao());
+		this.setCodigoProduto(this.getProduto().getCodigo());
+		this.setValor(this.getProduto().getValor());
 	}
 	
-	public void setCodigoProduto(String cod) {
+	public void setProduto(Produto p) {
+		if(p != null)
+			this.produto = p;
+		else
+			throw new IllegalArgumentException("O produto não pode ser nulo.");
+	}
+	
+	private Produto getProduto() {
+		return this.produto;
+	}
+	
+	private void setCodigoProduto(String cod) {
 		if(!cod.isEmpty())
 			this.codigoProduto = cod;
 		else
 			throw new IllegalArgumentException("O código do produto não pode ser nulo.");
 	}
 	
-	public void setDescricao(String desc) {
+	private void setDescricao(String desc) {
 		if(!desc.isEmpty())
 			this.descricao = desc;
 		else
 			throw new IllegalArgumentException("A descrição não pode ser nula.");
 	}
 	
-	public void setValor(float valor) {
+	private void setValor(float valor) {
 		if(valor >=0)
 			this.Valor = valor;
 		else
