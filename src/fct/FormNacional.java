@@ -5,18 +5,22 @@
  */
 package fct;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author WILLIANSOTOCORNOMEND
  */
 public class FormNacional extends javax.swing.JDialog {
-        private ProdutoImportado i;
+        private ProdutoNacional i;
     /**
      * Creates new form FormNacional
      */
-    public FormNacional(java.awt.Frame parent, boolean modal, ProdutoImportado i) {
+    public FormNacional(java.awt.Frame parent, boolean modal, ProdutoNacional i) {
         super(parent, modal);
         initComponents();
+        this.i = i;
+        
     }
 
     /**
@@ -147,7 +151,13 @@ public class FormNacional extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
+            if(this.txtCodigo.getText().isEmpty() || this.txtDescricao.getText().isEmpty()){
+               JOptionPane.showMessageDialog(null, "Erro");
+               return;
+            }
             i.setCodigo(txtCodigo.getText());
+            i.setDescricao(txtDescricao.getText());
+            dispose();
     }//GEN-LAST:event_btnOKActionPerformed
 
     /**
@@ -180,7 +190,7 @@ public class FormNacional extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormNacional dialog = new FormNacional(new javax.swing.JFrame(), true, new ProdutoImportado());
+                FormNacional dialog = new FormNacional(new javax.swing.JFrame(), true, new ProdutoNacional());
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

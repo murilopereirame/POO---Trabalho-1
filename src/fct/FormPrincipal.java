@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class FormPrincipal extends javax.swing.JFrame {
     private Cliente c = new Cliente();
-    private ProdutoImportado i = new ProdutoImportado();
+    private ProdutoNacional i = new ProdutoNacional();
     /**
      * Creates new form FormPrincipal
      */
