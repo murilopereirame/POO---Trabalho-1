@@ -10,13 +10,14 @@ package fct;
  * @author WILLIANSOTOCORNOMEND
  */
 public class FormCliente extends javax.swing.JDialog {
-
+    private Cliente c;
     /**
      * Creates new form FormCliente
      */
-    public FormCliente(java.awt.Frame parent, boolean modal) {
+    public FormCliente(java.awt.Frame parent, boolean modal, Cliente c) {
         super(parent, modal);
         initComponents();
+        this.c = c;
     }
 
     /**
@@ -120,8 +121,8 @@ public class FormCliente extends javax.swing.JDialog {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
 
-        cliente.setNome(txtNome.getText());
-        cliente.setCpf(txtCPF.getText());
+        c.setNome(txtNome.getText());
+        c.setCpf(txtCPF.getText());
         dispose();
     }//GEN-LAST:event_btnOKActionPerformed
 
