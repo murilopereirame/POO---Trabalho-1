@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author WILLIANSOTOCORNOMEND
  */
 public class FormPrincipal extends javax.swing.JFrame {
-    
+    private Cliente c = new Cliente();
     /**
      * Creates new form FormPrincipal
      */
@@ -103,7 +103,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
-        FormCliente form = new FormCliente(this, true);
+        FormCliente form = new FormCliente(this, true, c);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
