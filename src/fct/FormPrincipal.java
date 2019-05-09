@@ -13,7 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class FormPrincipal extends javax.swing.JFrame {
     private Cliente c = new Cliente();
-    private ProdutoNacional i = new ProdutoNacional();
+    private ProdutoNacional n = new ProdutoNacional();
+    private ProdutoImportado i = new ProdutoImportado();
     /**
      * Creates new form FormPrincipal
      */
@@ -72,6 +73,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuImportado.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuImportado.setText("Importado");
+        menuImportado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuImportadoActionPerformed(evt);
+            }
+        });
         menuProduto.add(menuImportado);
 
         menuCadastrar.add(menuProduto);
@@ -115,19 +121,26 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
-        //FormCliente form = new FormCliente(this, true, c);
-        //form.setLocationRelativeTo(null);
-        //form.setResizable(false);
-        //form.setVisible(true);
-        System.out.println(i.getCodigo());
+        FormCliente form = new FormCliente(this, true, c);
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+        
     }//GEN-LAST:event_menuClienteActionPerformed
 
     private void menuNacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNacionalActionPerformed
-        FormNacional form = new FormNacional (this, true, i);
+        FormNacional form = new FormNacional (this, true, n);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_menuNacionalActionPerformed
+
+    private void menuImportadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImportadoActionPerformed
+        FormImportado form = new FormImportado (this, true, i);
+        form.setLocationRelativeTo(null);
+        form.setResizable(false);
+        form.setVisible(true);
+    }//GEN-LAST:event_menuImportadoActionPerformed
 
     /**
      * @param args the command line arguments

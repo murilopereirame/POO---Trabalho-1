@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  * @author WILLIANSOTOCORNOMEND
  */
 public class FormNacional extends javax.swing.JDialog {
-        private ProdutoNacional i;
+        private ProdutoNacional n;
     /**
      * Creates new form FormNacional
      */
-    public FormNacional(java.awt.Frame parent, boolean modal, ProdutoNacional i) {
+    public FormNacional(java.awt.Frame parent, boolean modal, ProdutoNacional n) {
         super(parent, modal);
         initComponents();
-        this.i = i;
+        this.n = n;
         
     }
 
@@ -41,7 +41,7 @@ public class FormNacional extends javax.swing.JDialog {
         vleValor = new javax.swing.JSpinner();
         btnOK = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        vleImposto = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Prouto Nacional");
@@ -73,7 +73,6 @@ public class FormNacional extends javax.swing.JDialog {
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnOK.setText("OK");
-        btnOK.setEnabled(true);
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOKActionPerformed(evt);
@@ -83,8 +82,8 @@ public class FormNacional extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel5.setText("Impostos(%):");
 
-        jSpinner1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));
+        vleImposto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        vleImposto.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +104,7 @@ public class FormNacional extends javax.swing.JDialog {
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSpinner1)
+                                    .addComponent(vleImposto)
                                     .addComponent(vleValor, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                                 .addGap(91, 91, 91)
                                 .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -138,7 +137,7 @@ public class FormNacional extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vleImposto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 24, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -151,12 +150,13 @@ public class FormNacional extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-            if(this.txtCodigo.getText().isEmpty() || this.txtDescricao.getText().isEmpty()){
+            if(this.txtCodigo.getText().isEmpty() || this.txtDescricao.getText().isEmpty() || this.vleValor.getValue().equals(0f)){
                JOptionPane.showMessageDialog(null, "Erro");
                return;
             }
-            i.setCodigo(txtCodigo.getText());
-            i.setDescricao(txtDescricao.getText());
+            n.setCodigo(txtCodigo.getText());
+            n.setDescricao(txtDescricao.getText());
+            n.setTaxaImposto((float) vleImposto.getValue());
             dispose();
     }//GEN-LAST:event_btnOKActionPerformed
 
@@ -209,9 +209,9 @@ public class FormNacional extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescricao;
+    private javax.swing.JSpinner vleImposto;
     private javax.swing.JSpinner vleValor;
     // End of variables declaration//GEN-END:variables
 }
