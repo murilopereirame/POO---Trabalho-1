@@ -7,7 +7,7 @@ package fct;
 
 /**
  *
- * @author WILLIANSOTOCORNOMEND
+ * @author Willian Sotocorno || Murilo Pereira
  */
 public class NewJPanel extends javax.swing.JPanel {
 

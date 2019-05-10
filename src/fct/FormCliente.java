@@ -5,9 +5,11 @@
  */
 package fct;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author WILLIANSOTOCORNOMEND
+ * @author Willian Sotocorno || Murilo Pereira
  */
 public class FormCliente extends javax.swing.JDialog {
     private Cliente c;
@@ -121,7 +123,11 @@ public class FormCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-
+    	if(txtNome.getText().isEmpty() || txtCPF.getText().isEmpty())
+    	{
+    		JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
+    		return;
+    	}
         c.setNome(txtNome.getText());
         c.setCpf(txtCPF.getText());
         dispose();

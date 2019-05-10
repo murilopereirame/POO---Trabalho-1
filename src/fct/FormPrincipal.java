@@ -9,12 +9,19 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author WILLIANSOTOCORNOMEND
+ * @author Willian Sotocorno || Murilo Pereira
  */
 public class FormPrincipal extends javax.swing.JFrame {
-    private Cliente c = new Cliente();
-    private ProdutoNacional n = new ProdutoNacional();
-    private ProdutoImportado i = new ProdutoImportado();
+    
+	//Declaração dos vetoroes para armazenar Clientes e Produtos.
+	private Cliente[] arrc = new Cliente[20];
+    private ProdutoNacional[] arrpn = new ProdutoNacional[50];
+    private ProdutoImportado[] arrpi = new ProdutoImportado[30];
+    private Venda[] arrv = new Venda[30];
+    private Produto[] arrp = new Produto[15];
+    
+    
+    
     /**
      * Creates new form FormPrincipal
      */
@@ -121,7 +128,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteActionPerformed
-        FormCliente form = new FormCliente(this, true, c);
+    	int i = 0;
+    	while(arrc[i] != null) {
+    		i++;
+    	}
+    	arrc[i] = new Cliente();
+        FormCliente form = new FormCliente(this, true, arrc[i]);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
@@ -129,17 +141,27 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuClienteActionPerformed
 
     private void menuNacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNacionalActionPerformed
-        FormNacional form = new FormNacional (this, true, n);
+    	int i = 0;
+    	while(arrpn[i] != null) {
+    		i++;
+    	}
+    	arrpn[i] = new ProdutoNacional();
+        FormNacional form = new FormNacional (this, true, arrpn[i]);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
     }//GEN-LAST:event_menuNacionalActionPerformed
 
     private void menuImportadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuImportadoActionPerformed
-        FormImportado form = new FormImportado (this, true, i);
+    	int i = 0;
+    	while(arrpi[i] != null) {
+    		i++;
+    	}
+    	arrpi[i] = new ProdutoImportado();
+        FormImportado form = new FormImportado (this, true, arrpi[i]);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
-        form.setVisible(true);
+        form.setVisible(true);        
     }//GEN-LAST:event_menuImportadoActionPerformed
 
     /**

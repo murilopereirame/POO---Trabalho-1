@@ -8,7 +8,7 @@ public class Main {
 		
 		/*
 		 * Teste Venda
-		 */
+		 
 		Calendar cd = Calendar.getInstance();		
 		ProdutoNacional p = new ProdutoNacional();
 		p.setCodigo("AB-1");
@@ -37,6 +37,6 @@ public class Main {
 		System.out.println(v1.getItens()[0].getNum() + " | " + v1.getItens()[0].getDescricao());
 		System.out.println("\nData: " + v1.getData().get(Calendar.DATE));
 		v1.getTipoPgto().exibirDados();
-		
+		*/
 	}
 }

@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author WILLIANSOTOCORNOMEND
+ * @author Willian Sotocorno || Murilo Pereira
  */
 public class FormNacional extends javax.swing.JDialog {
         private ProdutoNacional n;
