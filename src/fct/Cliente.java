@@ -19,7 +19,7 @@ public class Cliente {
 	}
 	
 	public String getNome() {
-		return this.nome;
+		return nome;
 	}
 	
 	public String getCpf(){
