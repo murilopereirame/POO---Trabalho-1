@@ -48,6 +48,8 @@ public class Venda {
 		return cliente;
 	}
 	public void setCliente(Cliente cliente) {
+                
+                    
 		if(cliente != null)
 			this.cliente = cliente;
 		else
