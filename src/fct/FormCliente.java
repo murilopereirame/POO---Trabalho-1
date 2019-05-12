@@ -33,9 +33,9 @@ public class FormCliente extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        txtProduto = new javax.swing.JTextField();
+        txtCPF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtCPF = new javax.swing.JLabel();
+        lblCPF = new javax.swing.JLabel();
         btnOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,13 +53,13 @@ public class FormCliente extends javax.swing.JDialog {
             }
         });
 
-        txtProduto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtCPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("Nome:");
 
-        txtCPF.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        txtCPF.setText("CPF:");
+        lblCPF.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        lblCPF.setText("CPF:");
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnOK.setText("OK");
@@ -86,9 +86,9 @@ public class FormCliente extends javax.swing.JDialog {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCPF)
+                                .addComponent(lblCPF)
                                 .addGap(25, 25, 25)
-                                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,14 +106,14 @@ public class FormCliente extends javax.swing.JDialog {
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCPF)
-                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCPF)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOK)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtNome, txtProduto});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtNome, txtCPF});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,8 +179,8 @@ public class FormCliente extends javax.swing.JDialog {
     private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel txtCPF;
+    private javax.swing.JLabel lblCPF;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtProduto;
+    private javax.swing.JTextField txtCPF;
     // End of variables declaration//GEN-END:variables
 }

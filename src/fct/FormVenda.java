@@ -17,10 +17,19 @@ public class FormVenda extends javax.swing.JDialog {
     /**
      * Creates new form FormVenda
      */
+    //Aqui tem que setar o array de clientes local de acordo com o array
+    //Passado no construtor.
+    public FormVenda(java.awt.Frame parent, boolean modal, Venda arrv, Cliente[] c) {
+        super(parent, modal);
+        initComponents();
+        this.c = c;
+    }   
+    
     public FormVenda(java.awt.Frame parent, boolean modal, Venda arrv) {
         super(parent, modal);
         initComponents();
-    }
+        this.c = c;
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -224,12 +233,19 @@ public class FormVenda extends javax.swing.JDialog {
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         int i = 0;
         boolean verifica = false;
-        if(txtCPF.getText().equals(c[i].getCpf())){
-            txtCPF.setForeground(Color.GREEN);
-            verifica = true;
-        }
-        else i++;
         
+        //Não existia uma verificação se a posição do vetor passado era nulo.
+        
+        while(c[i] != null) {
+        	if(txtCPF.getText().equals(c[i].getCpf())){
+                txtCPF.setForeground(Color.GREEN);
+                verifica = true;
+                break;
+            }
+        	else
+        		i++;
+        }
+                        
         if (verifica == false){
             txtCPF.setForeground(Color.RED);
             txtAviso.setText("**CPF informado não se encontra cadastrado!");

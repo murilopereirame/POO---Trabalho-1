@@ -160,10 +160,18 @@ public class FormPrincipal extends javax.swing.JFrame {
     		i++;
     	}
     	arrc[i] = new Cliente();
+    	//Aqui não passamos um  vetor de clientes pq a gente ta armazenando
+    	//Um novo cliente, então a gente só passa a posiçao nula.
         FormCliente form = new FormCliente(this, true, arrc[i]);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
+        
+        i=0;
+    	while(arrc[i] != null) {
+    		System.out.println(arrc[i].getCpf());
+    		i++;
+    	}
         
     }//GEN-LAST:event_menuClienteActionPerformed
 
@@ -197,7 +205,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             i++;
         }
         arrv[i] = new Venda(15);
-        FormVenda form = new FormVenda (this, true, arrv[i]);
+        FormVenda form = new FormVenda (this, true, arrv[i], arrc);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
