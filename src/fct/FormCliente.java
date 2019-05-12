@@ -125,7 +125,7 @@ public class FormCliente extends javax.swing.JDialog {
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
     	if(txtNome.getText().isEmpty() || txtCPF.getText().isEmpty())
     	{
-    		JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
+    		JOptionPane.showMessageDialog(null, "Preencha todos os campos vazios!");
     		return;
     	}
         c.setNome(txtNome.getText());
