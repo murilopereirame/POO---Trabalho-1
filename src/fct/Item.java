@@ -15,7 +15,7 @@ public class Item {
 		this.setCodigoProduto(this.getProduto().getCodigo());
 		this.setValor(this.getProduto().getValor());
 	}
-	
+
 	public void setProduto(Produto p) {
 		if(p != null)
 			this.produto = p;

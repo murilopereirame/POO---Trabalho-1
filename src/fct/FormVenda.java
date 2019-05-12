@@ -7,29 +7,32 @@ package fct;
 
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author WILLIANSOTOCORNOMEND
  */
 public class FormVenda extends javax.swing.JDialog {
-    private Cliente[] c;
+    private static Cliente[] c;
+    private static ProdutoNacional[] pn;
+    private static ProdutoImportado[] pi;
+    private Venda v;
+    private int maxItens = 15;
 
     /**
      * Creates new form FormVenda
      */
     //Aqui tem que setar o array de clientes local de acordo com o array
     //Passado no construtor.
-    public FormVenda(java.awt.Frame parent, boolean modal, Venda arrv, Cliente[] c) {
+    public FormVenda(java.awt.Frame parent, boolean modal, Venda v, Cliente[] c, ProdutoNacional[] pn, ProdutoImportado[] pi) {
         super(parent, modal);
         initComponents();
+        this.v = v;
         this.c = c;
+        this.pn = pn;
+        this.pi = pi;
     }   
-    
-    public FormVenda(java.awt.Frame parent, boolean modal, Venda arrv) {
-        super(parent, modal);
-        initComponents();
-        this.c = c;
-    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +89,11 @@ public class FormVenda extends javax.swing.JDialog {
 
         btnAdicionar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel7.setText("Informe o Tipo de Pagamento:");
@@ -109,6 +117,24 @@ public class FormVenda extends javax.swing.JDialog {
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        	public void actionPerformed(java.awt.event.ActionEvent evt) {
+        		Cliente cl = new Cliente();
+        		int i = 0;                                
+                //Não existia uma verificação se a posição do vetor passado era nulo.
+                
+                while(c[i] != null) {
+                	if(txtCPF.getText().equals(c[i].getCpf())){
+                        break;
+                    }
+                	else
+                		i++;
+                }
+                
+                v.setCliente(c[i]);
+                
+        	}
+        });
 
         btnVerificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnVerificar.setText("Verificar");
@@ -251,6 +277,38 @@ public class FormVenda extends javax.swing.JDialog {
             txtAviso.setText("**CPF informado não se encontra cadastrado!");
         }
     }//GEN-LAST:event_btnVerificarActionPerformed
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {
+    	Item it = null;    	
+    	int i = 0;
+    	    	    	
+	    while(pi[i] != null) {
+	    	if(pi[i].getCodigo() == txtCodigo.getText()) {
+	    		it = new Item(Integer.parseInt(txtCodigo.getText()), pi[i]);
+	    		break;
+	    	}
+	    	else
+	    		i++;
+	    }	    	   
+	    
+	    if(it == null) {
+		    i = 0;
+		    while(pn[i] != null) {
+		    	if(pn[i].getCodigo() == txtCodigo.getText()) {		    		
+		    		it = new Item(Integer.parseInt(txtCodigo.getText()), pn[i]);
+		    		break;
+		    	}
+		    	else
+		    		i++;
+		    }
+	    }
+	    
+	    if(it == null)
+	    	JOptionPane.showMessageDialog(this, "Código inválido.");
+	    else {	    	
+	    	v.addItem(it);
+	    }
+	    
+    }
 
     /**
      * @param args the command line arguments
@@ -282,7 +340,7 @@ public class FormVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20));
+                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20), c,pn,pi);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -63,4 +63,13 @@ public class Venda {
 		else
 			throw new IllegalArgumentException("A data não pode ser nula.");
 	}
+	float calcularTotal() {
+		int i = 0;
+		float total = 0;
+		while(itens[i] != null) {
+			total += itens[i].getQuantidade() * itens[i].getValor();
+			i++;
+		}
+		return total;
+	}
 }

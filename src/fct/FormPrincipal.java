@@ -17,9 +17,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 	private Cliente[] arrc = new Cliente[20];
     private ProdutoNacional[] arrpn = new ProdutoNacional[50];
     private ProdutoImportado[] arrpi = new ProdutoImportado[30];
-    private Venda[] arrv = new Venda[30];
-    private Produto[] arrp = new Produto[15];
-    
+    private Venda[] arrv = new Venda[30];        
     
     
     /**
@@ -205,7 +203,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             i++;
         }
         arrv[i] = new Venda(15);
-        FormVenda form = new FormVenda (this, true, arrv[i], arrc);
+        FormVenda form = new FormVenda (this, true, arrv[i], arrc, arrpn, arrpi);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
