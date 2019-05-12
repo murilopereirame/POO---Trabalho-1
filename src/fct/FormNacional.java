@@ -151,11 +151,12 @@ public class FormNacional extends javax.swing.JDialog {
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
             if(this.txtCodigo.getText().isEmpty() || this.txtDescricao.getText().isEmpty() || this.vleValor.getValue().equals(0f)){
-               JOptionPane.showMessageDialog(null, "Erro");
+               JOptionPane.showMessageDialog(null, "Erro! Todos os campos devem ser preenchidos!");
                return;
             }
             n.setCodigo(txtCodigo.getText());
             n.setDescricao(txtDescricao.getText());
+            n.setValor((float) vleValor.getValue());
             n.setTaxaImposto((float) vleImposto.getValue());
             dispose();
     }//GEN-LAST:event_btnOKActionPerformed

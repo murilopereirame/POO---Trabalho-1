@@ -11,8 +11,7 @@ public class Venda {
 	
 	public Venda(int maxItens) {
 		itens = new Item[maxItens];
-	}
-	
+	}    
 	public void addItem(Item item) {
 		if(item != null) {;
 			for(int i = 0; i < itens.length; i++) {

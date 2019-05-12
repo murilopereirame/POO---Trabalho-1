@@ -123,7 +123,7 @@ public class FormCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-    	if(txtNome.getText().isEmpty() || txtCPF.getText().isEmpty())
+    	if(this.txtNome.getText().isEmpty() || this.txtCPF.getText().isEmpty())
     	{
     		JOptionPane.showMessageDialog(null, "Preencha todos os campos vazios!");
     		return;
