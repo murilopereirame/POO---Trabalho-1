@@ -166,6 +166,7 @@ public class FormImportado extends javax.swing.JDialog {
         }
         i.setCodigo(txtCodigo.getText());
         i.setDescricao(txtDescricao.getText());
+        i.setValor((float) vleValor.getValue());
         i.setTaxaImportacao((float) vleImportacao.getValue());
         i.setTaxaImposto((float) vleImposto.getValue());
         dispose();
