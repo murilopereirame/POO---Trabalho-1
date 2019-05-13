@@ -13,7 +13,7 @@ public class Item {
 		this.setProduto(p);
 		this.setDescricao(this.getProduto().getDescricao());
 		this.setCodigoProduto(this.getProduto().getCodigo());
-		this.setValor(this.getProduto().getValor());
+		this.setValor(this.getProduto().calcularPreco());
 	}
 
 	public void setProduto(Produto p) {

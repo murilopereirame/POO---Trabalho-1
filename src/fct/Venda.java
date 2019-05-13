@@ -13,11 +13,14 @@ public class Venda {
 		itens = new Item[maxItens];
 	}    
 	public void addItem(Item item) {
-		if(item != null) {;
-			for(int i = 0; i < itens.length; i++) {
+		if(item != null) {
+			int i = 0;
+			while(i < itens.length) {
 				if(itens[i] == null) {
 					itens[i] = item;
+					break;
 				}
+				
 			}
 		}
 	}
@@ -66,7 +69,7 @@ public class Venda {
 	float calcularTotal() {
 		int i = 0;
 		float total = 0;
-		while(itens[i] != null && i < itens.length) {
+		while(itens[i] != null && i < itens.length -1) {
 			total += itens[i].getQuantidade() * itens[i].getValor();
 			i++;
 		}
