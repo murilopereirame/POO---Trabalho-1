@@ -82,7 +82,7 @@ public class FormVenda extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("ADD Item:");
 
-        vleQtde.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        vleQtde.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N        //
 
         jLabel3.setText("x");
 
@@ -281,8 +281,8 @@ public class FormVenda extends javax.swing.JDialog {
         if (rdoCartao.isSelected()) {
             Cartao car = new Cartao();
             FormCartao car2 = new FormCartao(null, true, car, v.calcularTotal());//???
-
-            
+            car2.setVisible(true);
+            car2.setLocation(null);
             
         }
         
@@ -316,6 +316,7 @@ public class FormVenda extends javax.swing.JDialog {
 	    if(it == null)
 	    	JOptionPane.showMessageDialog(this, "Código inválido.");
 	    else {	    	
+	    	it.setQuantidade((float)vleQtde.getValue());
 	    	v.addItem(it);
 	    }
 	    
