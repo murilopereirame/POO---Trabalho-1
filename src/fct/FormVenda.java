@@ -280,7 +280,7 @@ public class FormVenda extends javax.swing.JDialog {
         v.setCliente(c[mem]);
         if (rdoCartao.isSelected()) {
             Cartao car = new Cartao();
-            FormCartao car2 = new FormCartao(this, true, car, v.calcularTotal());//???
+            FormCartao car2 = new FormCartao(null, true, car, v.calcularTotal());//???
 
             
             
