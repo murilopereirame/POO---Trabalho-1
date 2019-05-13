@@ -6,10 +6,11 @@ public class Cartao extends TipoPagamento{
 	private String nome;
 	private String numero;
 	
+        @Override
 	public void exibirDados() {
 		JOptionPane.showMessageDialog(null, 
 				"Tipo de pagamento: " + this.getTipoPagamento() + "\nNome no cartão: " + this.getNome() + "\nNúmero do cartão: " + this.getNumero(), 
-				"Atenção", JOptionPane.INFORMATION_MESSAGE);
+				"Compra Efetuada!", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public String getNome() {

@@ -19,6 +19,7 @@ public class FormVenda extends javax.swing.JDialog {
     private static ProdutoImportado[] pi;
     private Venda v;
     private int maxItens = 15;
+    private int mem = 0;
 
     /**
      * Creates new form FormVenda
@@ -54,7 +55,7 @@ public class FormVenda extends javax.swing.JDialog {
         btnAdicionar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         rdoDinheiro = new javax.swing.JRadioButton();
-        rdoCartão = new javax.swing.JRadioButton();
+        rdoCartao = new javax.swing.JRadioButton();
         rdoCheque = new javax.swing.JRadioButton();
         btnRegistrar = new javax.swing.JButton();
         btnVerificar = new javax.swing.JButton();
@@ -101,13 +102,18 @@ public class FormVenda extends javax.swing.JDialog {
         buttonGroup1.add(rdoDinheiro);
         rdoDinheiro.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rdoDinheiro.setText("Dinheiro");
-
-        buttonGroup1.add(rdoCartão);
-        rdoCartão.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        rdoCartão.setText("Cartão");
-        rdoCartão.addActionListener(new java.awt.event.ActionListener() {
+        rdoDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rdoCartãoActionPerformed(evt);
+                rdoDinheiroActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rdoCartao);
+        rdoCartao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        rdoCartao.setText("Cartão");
+        rdoCartao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoCartaoActionPerformed(evt);
             }
         });
 
@@ -118,22 +124,9 @@ public class FormVenda extends javax.swing.JDialog {
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnRegistrar.setText("Registrar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
-        	public void actionPerformed(java.awt.event.ActionEvent evt) {
-        		Cliente cl = new Cliente();
-        		int i = 0;                                
-                //Não existia uma verificação se a posição do vetor passado era nulo.
-                
-                while(c[i] != null) {
-                	if(txtCPF.getText().equals(c[i].getCpf())){
-                        break;
-                    }
-                	else
-                		i++;
-                }
-                
-                v.setCliente(c[i]);
-                
-        	}
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
         });
 
         btnVerificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -200,7 +193,7 @@ public class FormVenda extends javax.swing.JDialog {
                 .addGap(239, 239, 239))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
-                .addComponent(rdoCartão)
+                .addComponent(rdoCartao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegistrar)
@@ -238,7 +231,7 @@ public class FormVenda extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(rdoDinheiro)
                     .addComponent(rdoCheque)
-                    .addComponent(rdoCartão))
+                    .addComponent(rdoCartao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRegistrar)
                 .addGap(24, 24, 24))
@@ -248,9 +241,9 @@ public class FormVenda extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void rdoCartãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCartãoActionPerformed
+    private void rdoCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoCartaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rdoCartãoActionPerformed
+    }//GEN-LAST:event_rdoCartaoActionPerformed
 
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
         // TODO add your handling code here:
@@ -266,6 +259,7 @@ public class FormVenda extends javax.swing.JDialog {
         	if(txtCPF.getText().equals(c[i].getCpf())){
                 txtCPF.setForeground(Color.GREEN);
                 verifica = true;
+                mem = i;
                 break;
             }
         	else
@@ -277,6 +271,23 @@ public class FormVenda extends javax.swing.JDialog {
             txtAviso.setText("**CPF informado não se encontra cadastrado!");
         }
     }//GEN-LAST:event_btnVerificarActionPerformed
+
+    private void rdoDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoDinheiroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoDinheiroActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        v.setCliente(c[mem]);
+        if (rdoCartao.isSelected()) {
+            Cartao car = new Cartao();
+            FormCartao car2 = new FormCartao(this, true, car, v.calcularTotal());//???
+
+            
+            
+        }
+        
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {
     	Item it = null;    	
     	int i = 0;
@@ -364,7 +375,7 @@ public class FormVenda extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton rdoCartão;
+    private javax.swing.JRadioButton rdoCartao;
     private javax.swing.JRadioButton rdoCheque;
     private javax.swing.JRadioButton rdoDinheiro;
     private javax.swing.JLabel txtAviso;

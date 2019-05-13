@@ -90,7 +90,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-              <Component id="rdoCartão" min="-2" max="-2" attributes="0"/>
+              <Component id="rdoCartao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="rdoDinheiro" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="rdoCheque" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="rdoCartão" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="rdoCartao" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
@@ -226,8 +226,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Dinheiro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoDinheiroActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="rdoCart&#xe3;o">
+    <Component class="javax.swing.JRadioButton" name="rdoCartao">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
@@ -238,7 +241,7 @@
         <Property name="text" type="java.lang.String" value="Cart&#xe3;o"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoCart&#xe3;oActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rdoCartaoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rdoCheque">
@@ -259,6 +262,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnVerificar">
       <Properties>
