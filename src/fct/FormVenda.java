@@ -293,7 +293,7 @@ public class FormVenda extends javax.swing.JDialog {
     	int i = 0;
     	    	    	
 	    while(pi[i] != null) {
-	    	if(pi[i].getCodigo() == txtCodigo.getText()) {
+	    	if(pi[i].getCodigo().equals(txtCodigo.getText())) {
 	    		it = new Item(Integer.parseInt(txtCodigo.getText()), pi[i]);
 	    		break;
 	    	}
@@ -304,7 +304,7 @@ public class FormVenda extends javax.swing.JDialog {
 	    if(it == null) {
 		    i = 0;
 		    while(pn[i] != null) {
-		    	if(pn[i].getCodigo() == txtCodigo.getText()) {		    		
+		    	if(pn[i].getCodigo().equals(txtCodigo.getText())) {		    		
 		    		it = new Item(Integer.parseInt(txtCodigo.getText()), pn[i]);
 		    		break;
 		    	}

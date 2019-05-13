@@ -66,7 +66,7 @@ public class Venda {
 	float calcularTotal() {
 		int i = 0;
 		float total = 0;
-		while(itens[i] != null) {
+		while(itens[i] != null && i < itens.length) {
 			total += itens[i].getQuantidade() * itens[i].getValor();
 			i++;
 		}
