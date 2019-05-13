@@ -36,8 +36,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCompra = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
         menuBarra = new javax.swing.JMenuBar();
         menuMenu = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenu();
@@ -45,6 +45,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuProduto = new javax.swing.JMenu();
         menuNacional = new javax.swing.JMenuItem();
         menuImportado = new javax.swing.JMenuItem();
+        menuDados = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         menuSobre = new javax.swing.JMenuItem();
 
@@ -52,16 +55,16 @@ public class FormPrincipal extends javax.swing.JFrame {
         setTitle("Sistema de Controle de Vendas");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton1.setText("Registrar Nova Compra");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCompra.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnCompra.setText("Registrar Nova Compra");
+        btnCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCompraActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton2.setText("Relatórios de Vendas");
+        btnRelatorio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnRelatorio.setText("Relatórios de Vendas");
 
         menuMenu.setText("Menu");
         menuMenu.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -103,6 +106,16 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuMenu.add(menuCadastrar);
 
+        menuDados.setText("Dados");
+
+        jMenuItem1.setText("Salvar em arquivo");
+        menuDados.add(jMenuItem1);
+
+        jMenuItem2.setText("Carregar a partir de arquivo");
+        menuDados.add(jMenuItem2);
+
+        menuMenu.add(menuDados);
+
         menuBarra.add(menuMenu);
 
         menuAjuda.setText("Ajuda");
@@ -129,19 +142,19 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(164, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(150, 150, 150))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
 
@@ -197,7 +210,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setVisible(true);        
     }//GEN-LAST:event_menuImportadoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         int i = 0;
         while(arrv[i] != null){
             i++;
@@ -207,7 +220,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,12 +262,15 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCompra;
+    private javax.swing.JButton btnRelatorio;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenu menuDados;
     private javax.swing.JMenuItem menuImportado;
     private javax.swing.JMenu menuMenu;
     private javax.swing.JMenuItem menuNacional;
