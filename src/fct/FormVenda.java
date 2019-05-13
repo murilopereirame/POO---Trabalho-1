@@ -82,7 +82,8 @@ public class FormVenda extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("ADD Item:");
 
-        vleQtde.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N        //
+        vleQtde.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        vleQtde.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), null, Float.valueOf(1.0f)));
 
         jLabel3.setText("x");
 
