@@ -38,8 +38,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         menuBarra = new javax.swing.JMenuBar();
         menuMenu = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenu();
@@ -49,8 +49,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuImportado = new javax.swing.JMenuItem();
         menuCompra = new javax.swing.JMenuItem();
         menuDados = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuSalvar = new javax.swing.JMenuItem();
+        menuCarregar = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenu();
         menuClienteGeral = new javax.swing.JMenuItem();
@@ -93,9 +93,10 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
 
         menuBarra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -151,13 +152,23 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuDados.setText("Dados");
         menuDados.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
 
-        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        jMenuItem1.setText("Salvar em arquivo");
-        menuDados.add(jMenuItem1);
+        menuSalvar.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuSalvar.setText("Salvar em arquivo");
+        menuSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSalvarActionPerformed(evt);
+            }
+        });
+        menuDados.add(menuSalvar);
 
-        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
-        jMenuItem2.setText("Carregar a partir de arquivo");
-        menuDados.add(jMenuItem2);
+        menuCarregar.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuCarregar.setText("Carregar a partir de arquivo");
+        menuCarregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCarregarActionPerformed(evt);
+            }
+        });
+        menuDados.add(menuCarregar);
 
         menuMenu.add(menuDados);
 
@@ -171,6 +182,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuClienteGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuClienteGeral.setText("Clientes Geral");
+        menuClienteGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienteGeralActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuClienteGeral);
 
         menuClienteEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -184,6 +200,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuClienteGastos.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuClienteGastos.setText("Gastos de um cliente");
+        menuClienteGastos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienteGastosActionPerformed(evt);
+            }
+        });
         menuClientes.add(menuClienteGastos);
 
         menuRelatorios.add(menuClientes);
@@ -193,6 +214,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuProdutoGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuProdutoGeral.setText("Produtos Geral");
+        menuProdutoGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdutoGeralActionPerformed(evt);
+            }
+        });
         menuProdutos.add(menuProdutoGeral);
 
         menuProdotuEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -211,14 +237,29 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuVendasGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuVendasGeral.setText("Vendas Geral");
+        menuVendasGeral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendasGeralActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuVendasGeral);
 
         menuVendasEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuVendasEspecifico.setText("Vendas Específico");
+        menuVendasEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendasEspecificoActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuVendasEspecifico);
 
         menuVendasSimples.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         menuVendasSimples.setText("Vendas por tipo de pagamento - Simples");
+        menuVendasSimples.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendasSimplesActionPerformed(evt);
+            }
+        });
         menuVendas.add(menuVendasSimples);
 
         menuVendasDetalhado.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -255,14 +296,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane2)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,6 +373,38 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_menuCompraActionPerformed
 
+    private void menuClienteGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteGeralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuClienteGeralActionPerformed
+
+    private void menuClienteGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteGastosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuClienteGastosActionPerformed
+
+    private void menuProdutoGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoGeralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuProdutoGeralActionPerformed
+
+    private void menuVendasGeralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasGeralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVendasGeralActionPerformed
+
+    private void menuVendasEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasEspecificoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVendasEspecificoActionPerformed
+
+    private void menuVendasSimplesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasSimplesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVendasSimplesActionPerformed
+
+    private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSalvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuSalvarActionPerformed
+
+    private void menuCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCarregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuCarregarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,14 +446,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenu menuCadastrar;
+    private javax.swing.JMenuItem menuCarregar;
     private javax.swing.JMenuItem menuCliente;
     private javax.swing.JMenuItem menuClienteEspecifico;
     private javax.swing.JMenuItem menuClienteGastos;
@@ -396,6 +468,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuProdutoGeral;
     private javax.swing.JMenu menuProdutos;
     private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenuItem menuSalvar;
     private javax.swing.JMenuItem menuSobre;
     private javax.swing.JMenu menuVendas;
     private javax.swing.JMenuItem menuVendasDetalhado;
