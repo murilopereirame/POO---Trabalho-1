@@ -36,8 +36,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnCompra = new javax.swing.JButton();
-        btnRelatorio = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         menuBarra = new javax.swing.JMenuBar();
         menuMenu = new javax.swing.JMenu();
         menuCadastrar = new javax.swing.JMenu();
@@ -45,9 +47,23 @@ public class FormPrincipal extends javax.swing.JFrame {
         menuProduto = new javax.swing.JMenu();
         menuNacional = new javax.swing.JMenuItem();
         menuImportado = new javax.swing.JMenuItem();
+        menuCompra = new javax.swing.JMenuItem();
         menuDados = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenu();
+        menuClienteGeral = new javax.swing.JMenuItem();
+        menuClienteEspecifico = new javax.swing.JMenuItem();
+        menuClienteGastos = new javax.swing.JMenuItem();
+        menuProdutos = new javax.swing.JMenu();
+        menuProdutoGeral = new javax.swing.JMenuItem();
+        menuProdotuEspecifico = new javax.swing.JMenuItem();
+        menuVendas = new javax.swing.JMenu();
+        menuVendasGeral = new javax.swing.JMenuItem();
+        menuVendasEspecifico = new javax.swing.JMenuItem();
+        menuVendasSimples = new javax.swing.JMenuItem();
+        menuVendasDetalhado = new javax.swing.JMenuItem();
         menuAjuda = new javax.swing.JMenu();
         menuSobre = new javax.swing.JMenuItem();
 
@@ -55,16 +71,33 @@ public class FormPrincipal extends javax.swing.JFrame {
         setTitle("Sistema de Controle de Vendas");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        btnCompra.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnCompra.setText("Registrar Nova Compra");
-        btnCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraActionPerformed(evt);
-            }
-        });
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnRelatorio.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnRelatorio.setText("Relatórios de Vendas");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("RELATÓRIOS");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(266, 266, 266))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        menuBarra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         menuMenu.setText("Menu");
         menuMenu.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -106,17 +139,100 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         menuMenu.add(menuCadastrar);
 
-        menuDados.setText("Dados");
+        menuCompra.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuCompra.setText("Nova Compra");
+        menuCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCompraActionPerformed(evt);
+            }
+        });
+        menuMenu.add(menuCompra);
 
+        menuDados.setText("Dados");
+        menuDados.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         jMenuItem1.setText("Salvar em arquivo");
         menuDados.add(jMenuItem1);
 
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
         jMenuItem2.setText("Carregar a partir de arquivo");
         menuDados.add(jMenuItem2);
 
         menuMenu.add(menuDados);
 
         menuBarra.add(menuMenu);
+
+        menuRelatorios.setText("Relatórios");
+        menuRelatorios.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        menuClientes.setText("Clientes");
+        menuClientes.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        menuClienteGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuClienteGeral.setText("Clientes Geral");
+        menuClientes.add(menuClienteGeral);
+
+        menuClienteEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuClienteEspecifico.setText("Cliente Específico");
+        menuClienteEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClienteEspecificoActionPerformed(evt);
+            }
+        });
+        menuClientes.add(menuClienteEspecifico);
+
+        menuClienteGastos.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuClienteGastos.setText("Gastos de um cliente");
+        menuClientes.add(menuClienteGastos);
+
+        menuRelatorios.add(menuClientes);
+
+        menuProdutos.setText("Produtos");
+        menuProdutos.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        menuProdutoGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuProdutoGeral.setText("Produtos Geral");
+        menuProdutos.add(menuProdutoGeral);
+
+        menuProdotuEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuProdotuEspecifico.setText("Produto Específico");
+        menuProdotuEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuProdotuEspecificoActionPerformed(evt);
+            }
+        });
+        menuProdutos.add(menuProdotuEspecifico);
+
+        menuRelatorios.add(menuProdutos);
+
+        menuVendas.setText("Vendas");
+        menuVendas.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+
+        menuVendasGeral.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuVendasGeral.setText("Vendas Geral");
+        menuVendas.add(menuVendasGeral);
+
+        menuVendasEspecifico.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuVendasEspecifico.setText("Vendas Específico");
+        menuVendas.add(menuVendasEspecifico);
+
+        menuVendasSimples.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuVendasSimples.setText("Vendas por tipo de pagamento - Simples");
+        menuVendas.add(menuVendasSimples);
+
+        menuVendasDetalhado.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
+        menuVendasDetalhado.setText("Vendas por tipo de pagamento - Detalhado");
+        menuVendasDetalhado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuVendasDetalhadoActionPerformed(evt);
+            }
+        });
+        menuVendas.add(menuVendasDetalhado);
+
+        menuRelatorios.add(menuVendas);
+
+        menuBarra.add(menuRelatorios);
 
         menuAjuda.setText("Ajuda");
         menuAjuda.setFont(new java.awt.Font("Segoe UI", 0, 19)); // NOI18N
@@ -138,24 +254,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(164, Short.MAX_VALUE)
-                        .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(150, 150, 150))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,19 +278,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     		i++;
     	}
     	arrc[i] = new Cliente();
-    	//Aqui não passamos um  vetor de clientes pq a gente ta armazenando
-    	//Um novo cliente, então a gente só passa a posiçao nula.
         FormCliente form = new FormCliente(this, true, arrc[i]);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
-        form.setVisible(true);
-        
-        i=0;
-    	while(arrc[i] != null) {
-    		System.out.println(arrc[i].getCpf());
-    		i++;
-    	}
-        
+        form.setVisible(true);   
     }//GEN-LAST:event_menuClienteActionPerformed
 
     private void menuNacionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuNacionalActionPerformed
@@ -210,8 +308,20 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setVisible(true);        
     }//GEN-LAST:event_menuImportadoActionPerformed
 
-    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
-        int i = 0;
+    private void menuClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClienteEspecificoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuClienteEspecificoActionPerformed
+
+    private void menuProdotuEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdotuEspecificoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuProdotuEspecificoActionPerformed
+
+    private void menuVendasDetalhadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendasDetalhadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuVendasDetalhadoActionPerformed
+
+    private void menuCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCompraActionPerformed
+          int i = 0;
         while(arrv[i] != null){
             i++;
         }
@@ -220,7 +330,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_btnCompraActionPerformed
+    }//GEN-LAST:event_menuCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,19 +372,35 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCompra;
-    private javax.swing.JButton btnRelatorio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenu menuAjuda;
     private javax.swing.JMenuBar menuBarra;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenuItem menuCliente;
+    private javax.swing.JMenuItem menuClienteEspecifico;
+    private javax.swing.JMenuItem menuClienteGastos;
+    private javax.swing.JMenuItem menuClienteGeral;
+    private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenuItem menuCompra;
     private javax.swing.JMenu menuDados;
     private javax.swing.JMenuItem menuImportado;
     private javax.swing.JMenu menuMenu;
     private javax.swing.JMenuItem menuNacional;
+    private javax.swing.JMenuItem menuProdotuEspecifico;
     private javax.swing.JMenu menuProduto;
+    private javax.swing.JMenuItem menuProdutoGeral;
+    private javax.swing.JMenu menuProdutos;
+    private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenuItem menuSobre;
+    private javax.swing.JMenu menuVendas;
+    private javax.swing.JMenuItem menuVendasDetalhado;
+    private javax.swing.JMenuItem menuVendasEspecifico;
+    private javax.swing.JMenuItem menuVendasGeral;
+    private javax.swing.JMenuItem menuVendasSimples;
     // End of variables declaration//GEN-END:variables
 }
