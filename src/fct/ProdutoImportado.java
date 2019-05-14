@@ -18,11 +18,11 @@ public class ProdutoImportado extends Produto {
 			throw new IllegalArgumentException("A taxa de importação não pode ser negativa.");
 	}
 	
-	private float getTaxaImportacao() {
+	public float getTaxaImportacao() {
 		return this.taxaImportacao;
 	}
 	
-	private float getTaxaImposto() {
+	public float getTaxaImposto() {
 		return this.taxaImposto;
 	}
 	

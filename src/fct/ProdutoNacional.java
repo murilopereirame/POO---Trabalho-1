@@ -10,7 +10,7 @@ public class ProdutoNacional extends Produto{
 			throw new IllegalArgumentException("A taxa de imposto não pode ser negativa.");
 	}
 	
-	private float getTaxaImposto() {
+	public float getTaxaImposto() {
 		return this.taxaImposto;
 	}
 	

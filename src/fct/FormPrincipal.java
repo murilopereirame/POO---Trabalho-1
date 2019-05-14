@@ -358,9 +358,40 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	}// GEN-LAST:event_menuClienteEspecificoActionPerformed
 
-	private void menuProdotuEspecificoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuProdotuEspecificoActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_menuProdotuEspecificoActionPerformed
+	private void menuProdotuEspecificoActionPerformed(java.awt.event.ActionEvent evt) {
+		this.jTextArea2.setText("");
+		String pCode = JOptionPane.showInputDialog("Insira o código do produto: ");
+		String textoAtual = "========Produto código: " + pCode + "========\n";
+		for (int i = 0; i < arrpn.length; i++) {
+			if (arrpn[i] != null) {
+				if (arrpn[i].getCodigo().equals(pCode)) {
+					textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
+					textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
+					textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
+					textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
+					textoAtual += "============================";
+					this.jTextArea2.setText(textoAtual);
+					return;
+				}
+			}
+		}
+		for (int i = 0; i < arrpi.length; i++) {
+			if (arrpi[i] != null) {
+				if (arrpi[i].getCodigo().equals(pCode)) {
+					textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
+					textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
+					textoAtual += "Imposto: " + arrpi[i].getTaxaImposto() + "\n";
+					textoAtual += "Taxa importação: " + arrpi[i].getTaxaImportacao() + "\n";
+					textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
+					textoAtual += "============================";
+					this.jTextArea2.setText(textoAtual);
+					return;
+				}
+			}
+		}
+		this.jTextArea2.setText("Produto não encontrado");
+
+	}
 
 	private void menuVendasDetalhadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasDetalhadoActionPerformed
 		// TODO add your handling code here:
@@ -389,27 +420,31 @@ public class FormPrincipal extends javax.swing.JFrame {
 		}
 		textoAtual += "================";
 		this.jTextArea2.setText(textoAtual);
-	}// GEN-LAST:event_menuClienteGeralActionPerformed
+	}
 
-	private void menuClienteGastosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuClienteGastosActionPerformed
+	private void menuClienteGastosActionPerformed(java.awt.event.ActionEvent evt) {
 		this.jTextArea2.setText("");
 		String cpfBusca = JOptionPane.showInputDialog("Insira o CPF do cliente: ");
 		String textoAtual = "====Compras com o CPF: " + cpfBusca + " ====\n";
 		float total = 0;
 		for (int i = 0; i < arrv.length; i++) {
 			if (arrv[i] != null) {
-				if (arrv[i].getCliente().getCpf().equals(cpfBusca)) {					
+				if (arrv[i].getCliente().getCpf().equals(cpfBusca)) {
 					textoAtual += "Venda Nº: " + arrv[i].getNumero();
-					textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/" + arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);					
+					textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+							+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
 					textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
 					textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
 					textoAtual += "Itens: \n";
 					textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
-					for(int j = 0; j < arrv[i].getItens().length; j++) {
-						if(arrv[i].getItens()[j] != null)
-							textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | " + arrv[i].getItens()[j].getDescricao() + " | R$" +  arrv[i].getItens()[j].getValor() + " | " + arrv[i].getItens()[j].getQuantidade() + " | R$" + arrv[i].getItens()[j].calcularTotal() + "\n";
+					for (int j = 0; j < arrv[i].getItens().length; j++) {
+						if (arrv[i].getItens()[j] != null)
+							textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+									+ arrv[i].getItens()[j].getDescricao() + " | R$" + arrv[i].getItens()[j].getValor()
+									+ " | " + arrv[i].getItens()[j].getQuantidade() + " | R$"
+									+ arrv[i].getItens()[j].calcularTotal() + "\n";
 					}
-					textoAtual += "\nTotal: R$" + arrv[i].calcularTotal(); 
+					textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 					total += arrv[i].calcularTotal();
 					textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
 					textoAtual += "\n\n";
@@ -419,11 +454,33 @@ public class FormPrincipal extends javax.swing.JFrame {
 		textoAtual += "\nValor total gasto: R$" + total;
 		textoAtual += "==============================";
 		this.jTextArea2.setText(textoAtual);
-	}// GEN-LAST:event_menuClienteGastosActionPerformed
+	}
 
-	private void menuProdutoGeralActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuProdutoGeralActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_menuProdutoGeralActionPerformed
+	private void menuProdutoGeralActionPerformed(java.awt.event.ActionEvent evt) {
+		this.jTextArea2.setText("");
+		String textoAtual = "====Produtos nacionais====\n";
+		for (int i = 0; i < arrpn.length; i++) {
+			if (arrpn[i] != null) {
+				textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
+				textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
+				textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
+				textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
+			}
+		}
+		textoAtual += "============================";
+		textoAtual += "\n========Produtos Importados=======\n";
+		for (int i = 0; i < arrpi.length; i++) {
+			if (arrpi[i] != null) {
+				textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
+				textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
+				textoAtual += "Imposto: " + arrpi[i].getTaxaImposto() + "\n";
+				textoAtual += "Taxa importação: " + arrpi[i].getTaxaImportacao() + "\n";
+				textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
+			}
+		}
+		textoAtual += "============================";
+		this.jTextArea2.setText(textoAtual);
+	}
 
 	private void menuVendasGeralActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasGeralActionPerformed
 		// TODO add your handling code here:
