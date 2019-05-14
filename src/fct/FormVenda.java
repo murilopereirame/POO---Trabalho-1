@@ -6,6 +6,7 @@
 package fct;
 
 import java.awt.Color;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,7 @@ public class FormVenda extends javax.swing.JDialog {
     private static Cliente[] c;
     private static ProdutoNacional[] pn;
     private static ProdutoImportado[] pi;
+    private int posVV = 0;
     private Venda v;
     private int maxItens = 15;
     private int mem = 0;
@@ -26,13 +28,15 @@ public class FormVenda extends javax.swing.JDialog {
      */
     //Aqui tem que setar o array de clientes local de acordo com o array
     //Passado no construtor.
-    public FormVenda(java.awt.Frame parent, boolean modal, Venda v, Cliente[] c, ProdutoNacional[] pn, ProdutoImportado[] pi) {
+    public FormVenda(java.awt.Frame parent, boolean modal, Venda v, Cliente[] c, ProdutoNacional[] pn, ProdutoImportado[] pi, int pos) {
         super(parent, modal);
         initComponents();
         this.v = v;
         this.c = c;
         this.pn = pn;
         this.pi = pi;
+        this.posVV = pos;
+        this.jTextArea1.setText("Cod. | Descrição | Valor U. | Qtde. | Total");
     }   
 
     /**
@@ -288,14 +292,34 @@ public class FormVenda extends javax.swing.JDialog {
     }//GEN-LAST:event_rdoDinheiroActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    	Calendar d = Calendar.getInstance();
+    	d.set(d.get(Calendar.YEAR), d.get(Calendar.MONTH), d.get(Calendar.DAY_OF_MONTH));
         v.setCliente(c[mem]);
+        v.setData(d);
+        v.setNumero(c[mem].getNome().charAt(0) + "" + posVV);
         if (rdoCartao.isSelected()) {
             Cartao car = new Cartao();
-            FormCartao car2 = new FormCartao(null, true, car, v.calcularTotal());//???
+            FormCartao car2 = new FormCartao(null, true, car, v.calcularTotal());
             car2.setLocationRelativeTo(null);
             car2.setResizable(false);
             car2.setVisible(true);
-            
+            v.setTipoPgto(car);
+        }
+        else if (rdoCheque.isSelected()) {
+            Cheque cq = new Cheque();
+            FormCheque cq2 = new FormCheque(null, true, cq, v.calcularTotal());
+            cq2.setLocationRelativeTo(null);
+            cq2.setResizable(false);
+            cq2.setVisible(true);
+            v.setTipoPgto(cq);
+        }
+        else if (rdoDinheiro.isSelected()) {
+            Dinheiro din = new Dinheiro();
+            FormDinheiro din2 = new FormDinheiro(null, true, din, v.calcularTotal());
+            din2.setLocationRelativeTo(null);
+            din2.setResizable(false);
+            din2.setVisible(true);
+            v.setTipoPgto(din);
         }
         
         
@@ -330,6 +354,9 @@ public class FormVenda extends javax.swing.JDialog {
 	    else {	    	
 	    	it.setQuantidade((float)vleQtde.getValue());
 	    	v.addItem(it);
+	    	String item = jTextArea1.getText();
+	    	item += "\n" + it.getCodigoProduto() + " | " + it.getDescricao() + " | " + it.getValor() + " | " + it.getQuantidade() + " | " + it.calcularTotal();
+	    	jTextArea1.setText(item);
 	    }
 	    
     }
@@ -364,7 +391,7 @@ public class FormVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20), c,pn,pi);
+                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20), c,pn,pi, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
