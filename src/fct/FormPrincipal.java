@@ -394,7 +394,102 @@ public class FormPrincipal extends javax.swing.JFrame {
 	}
 
 	private void menuVendasDetalhadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasDetalhadoActionPerformed
-		// TODO add your handling code here:
+		int code = Integer.parseInt(JOptionPane.showInputDialog(
+				"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		String textoAtual = "";
+		switch (code) {
+		case 1:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. em dinheiro====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Dinheiro")) {
+						textoAtual += "Venda Nº: " + arrv[i].getNumero();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						for (int j = 0; j < arrv[i].getItens().length; j++) {
+							if (arrv[i].getItens()[j] != null)
+								textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+										+ arrv[i].getItens()[j].getDescricao() + " | R$"
+										+ arrv[i].getItens()[j].getValor() + " | "
+										+ arrv[i].getItens()[j].getQuantidade() + " | R$"
+										+ arrv[i].getItens()[j].calcularTotal() + "\n";
+						}
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		case 2:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. no cartão====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Cartão")) {
+						textoAtual += "Venda Nº: " + arrv[i].getNumero();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						for (int j = 0; j < arrv[i].getItens().length; j++) {
+							if (arrv[i].getItens()[j] != null)
+								textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+										+ arrv[i].getItens()[j].getDescricao() + " | R$"
+										+ arrv[i].getItens()[j].getValor() + " | "
+										+ arrv[i].getItens()[j].getQuantidade() + " | R$"
+										+ arrv[i].getItens()[j].calcularTotal() + "\n";
+						}
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		case 3:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. no cheque====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Cheque")) {
+						textoAtual += "Venda Nº: " + arrv[i].getNumero();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						for (int j = 0; j < arrv[i].getItens().length; j++) {
+							if (arrv[i].getItens()[j] != null)
+								textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+										+ arrv[i].getItens()[j].getDescricao() + " | R$"
+										+ arrv[i].getItens()[j].getValor() + " | "
+										+ arrv[i].getItens()[j].getQuantidade() + " | R$"
+										+ arrv[i].getItens()[j].calcularTotal() + "\n";
+						}
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		default:
+			this.jTextArea2.setText("Método de pagamento inválido.");
+			break;
+		}
+		this.jTextArea2.setText(textoAtual);
 	}// GEN-LAST:event_menuVendasDetalhadoActionPerformed
 
 	private void menuCompraActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuCompraActionPerformed
@@ -483,23 +578,139 @@ public class FormPrincipal extends javax.swing.JFrame {
 	}
 
 	private void menuVendasGeralActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasGeralActionPerformed
-		// TODO add your handling code here:
+		this.jTextArea2.setText("");
+		String textoAtual = "====Vendas====\n";
+		float total = 0;
+		for (int i = 0; i < arrv.length; i++) {
+			if (arrv[i] != null) {
+				textoAtual += "Venda Nº: " + arrv[i].getNumero();
+				textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+						+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+				textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+				textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
+				textoAtual += "Itens: \n";
+				textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+				for (int j = 0; j < arrv[i].getItens().length; j++) {
+					if (arrv[i].getItens()[j] != null)
+						textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+								+ arrv[i].getItens()[j].getDescricao() + " | R$" + arrv[i].getItens()[j].getValor()
+								+ " | " + arrv[i].getItens()[j].getQuantidade() + " | R$"
+								+ arrv[i].getItens()[j].calcularTotal() + "\n";
+				}
+				textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+				total += arrv[i].calcularTotal();
+				textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+				textoAtual += "\n\n";
+			}
+		}
+		textoAtual += "\nValor gerado com vendas: R$" + total;
+		textoAtual += "==============================";
 	}// GEN-LAST:event_menuVendasGeralActionPerformed
 
 	private void menuVendasEspecificoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasEspecificoActionPerformed
-		// TODO add your handling code here:
-	}// GEN-LAST:event_menuVendasEspecificoActionPerformed
+		this.jTextArea2.setText("");
+		String vendasCod = JOptionPane.showInputDialog("Insira o código da venda: ");
+		String textoAtual = "====Venda código: " + vendasCod + " ====\n";
+		for (int i = 0; i < arrv.length; i++) {
+			if (arrv[i] != null) {
+				if (arrv[i].getNumero().equals(vendasCod)) {
+					textoAtual += "Venda Nº: " + arrv[i].getNumero();
+					textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+							+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+					textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+					textoAtual += " CPF: " + arrv[i].getCliente().getCpf() + "\n";
+					textoAtual += "Itens: \n";
+					textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+					for (int j = 0; j < arrv[i].getItens().length; j++) {
+						if (arrv[i].getItens()[j] != null)
+							textoAtual += j + " | " + arrv[i].getItens()[j].getCodigoProduto() + " | "
+									+ arrv[i].getItens()[j].getDescricao() + " | R$" + arrv[i].getItens()[j].getValor()
+									+ " | " + arrv[i].getItens()[j].getQuantidade() + " | R$"
+									+ arrv[i].getItens()[j].calcularTotal() + "\n";
+					}
+					textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+					textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+					textoAtual += "\n\n";
+				}
+			}
+		}
+	}
 
 	private void menuVendasSimplesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasSimplesActionPerformed
-		// TODO add your handling code here:
+		int code = Integer.parseInt(JOptionPane.showInputDialog(
+				"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		String textoAtual = "";
+		switch (code) {
+		case 1:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. em dinheiro====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Dinheiro")) {
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		case 2:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. no cartão====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Cartão")) {
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		case 3:
+			this.jTextArea2.setText("");
+			textoAtual = "====Vendas c/ pgto. no cheque====\n";
+			for (int i = 0; i < arrv.length; i++) {
+				if (arrv[i] != null) {
+					if (arrv[i].getTipoPgto().getTipoPagamento().equals("Cheque")) {
+						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
+						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
+								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
+						textoAtual += "Itens: \n";
+						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
+						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
+						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\n\n";
+					}
+				}
+			}
+			break;
+
+		default:
+			this.jTextArea2.setText("Método de pagamento inválido.");
+			break;
+		}
+		this.jTextArea2.setText(textoAtual);
 	}// GEN-LAST:event_menuVendasSimplesActionPerformed
 
 	private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSalvarActionPerformed
-		// TODO add your handling code here:
+		// AQUI VAI O CÓDIGO PRA EXPORTAR
 	}// GEN-LAST:event_menuSalvarActionPerformed
 
 	private void menuCarregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuCarregarActionPerformed
-		// TODO add your handling code here:
+		// AQUI VAI O CÓDIGO PRA CARREGAR NOS VETORES
 	}// GEN-LAST:event_menuCarregarActionPerformed
 
 	/**
