@@ -20,7 +20,7 @@ public class Venda {
 					itens[i] = item;
 					break;
 				}
-				
+				i++;
 			}
 		}
 	}

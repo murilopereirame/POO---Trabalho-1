@@ -282,8 +282,9 @@ public class FormVenda extends javax.swing.JDialog {
         if (rdoCartao.isSelected()) {
             Cartao car = new Cartao();
             FormCartao car2 = new FormCartao(null, true, car, v.calcularTotal());//???
+            car2.setLocationRelativeTo(null);
+            car2.setResizable(false);
             car2.setVisible(true);
-            car2.setLocation(null);
             
         }
         
