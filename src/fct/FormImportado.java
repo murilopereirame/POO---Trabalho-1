@@ -61,10 +61,10 @@ public class FormImportado extends javax.swing.JDialog {
         jLabel3.setText("Valor: R$");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setText("Imposto:");
+        jLabel4.setText("Imposto:R$");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel5.setText("Tax de Importação:");
+        jLabel5.setText("Tax de Importação:R$");
 
         txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -108,9 +108,7 @@ public class FormImportado extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(31, 31, 31)))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
