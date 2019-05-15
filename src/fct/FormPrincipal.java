@@ -394,8 +394,15 @@ public class FormPrincipal extends javax.swing.JFrame {
 	}
 
 	private void menuVendasDetalhadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasDetalhadoActionPerformed
-		int code = Integer.parseInt(JOptionPane.showInputDialog(
-				"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		int code = -1;
+		try {
+			code = Integer.parseInt(JOptionPane.showInputDialog(
+					"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		}
+		catch(Exception ex) {
+			this.jTextArea2.setText("Entrada inválida.");
+			return;
+		}
 		String textoAtual = "";
 		switch (code) {
 		case 1:
@@ -450,6 +457,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 						}
 						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\nNome: " + ((Cartao) (arrv[i].getTipoPgto())).getNome();
+						textoAtual += "\nNúmero: " + ((Cartao) (arrv[i].getTipoPgto())).getNumero();
 						textoAtual += "\n\n";
 					}
 				}
@@ -479,6 +488,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 						}
 						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\nEmissor: " + ((Cheque)arrv[i].getTipoPgto()).getNomeEmissor();
+						textoAtual += "\nNúmero do cheque: " + ((Cheque)arrv[i].getTipoPgto()).getNumeroCheque();
 						textoAtual += "\n\n";
 					}
 				}
@@ -542,12 +553,21 @@ public class FormPrincipal extends javax.swing.JFrame {
 					textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 					total += arrv[i].calcularTotal();
 					textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+					
+					if(arrv[i].getTipoPgto() instanceof Cartao) {
+						textoAtual += "\nNome: " + ((Cartao)arrv[i].getTipoPgto()).getNome();
+						textoAtual += "\nNúmero: " + ((Cartao)arrv[i].getTipoPgto()).getNumero();
+					}					
+					else if(arrv[i].getTipoPgto() instanceof Cheque){
+						textoAtual += "\nEmissor: " + ((Cheque)arrv[i].getTipoPgto()).getNomeEmissor();
+						textoAtual += "\nNúmero: " + ((Cheque)arrv[i].getTipoPgto()).getNumeroCheque();
+					}
 					textoAtual += "\n\n";
 				}
 			}
 		}
 		textoAtual += "\nValor total gasto: R$" + total;
-		textoAtual += "==============================";
+		textoAtual += "\n==============================";
 		this.jTextArea2.setText(textoAtual);
 	}
 
@@ -605,6 +625,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 		}
 		textoAtual += "\nValor gerado com vendas: R$" + total;
 		textoAtual += "==============================";
+		this.jTextArea2.setText(textoAtual);
 	}// GEN-LAST:event_menuVendasGeralActionPerformed
 
 	private void menuVendasEspecificoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasEspecificoActionPerformed
@@ -630,15 +651,32 @@ public class FormPrincipal extends javax.swing.JFrame {
 					}
 					textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 					textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+					if(arrv[i].getTipoPgto() instanceof Cartao) {
+						textoAtual += "\nNome: " + ((Cartao)arrv[i].getTipoPgto()).getNome();
+						textoAtual += "\nNúmero: " + ((Cartao)arrv[i].getTipoPgto()).getNumero();
+					}					
+					else if(arrv[i].getTipoPgto() instanceof Cheque){
+						textoAtual += "\nEmissor: " + ((Cheque)arrv[i].getTipoPgto()).getNomeEmissor();
+						textoAtual += "\nNúmero: " + ((Cheque)arrv[i].getTipoPgto()).getNumeroCheque();
+					}
 					textoAtual += "\n\n";
+					textoAtual += "===========================================";
+					this.jTextArea2.setText(textoAtual);
 				}
 			}
-		}
+		}		
 	}
 
 	private void menuVendasSimplesActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuVendasSimplesActionPerformed
-		int code = Integer.parseInt(JOptionPane.showInputDialog(
-				"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		int code = -1;
+		try {
+			code = Integer.parseInt(JOptionPane.showInputDialog(
+					"Selecione um tipo de pagamento:\n1-Dinheiro\n2-Cartão\n3-Cheque\n\nInsira somente números:"));
+		}
+		catch(Exception ex) {
+			this.jTextArea2.setText("Entrada inválida.");
+			return;
+		}
 		String textoAtual = "";
 		switch (code) {
 		case 1:
@@ -650,11 +688,13 @@ public class FormPrincipal extends javax.swing.JFrame {
 						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
 						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
 								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
-						textoAtual += "Itens: \n";
+						textoAtual += "\nItens: \n";
 						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
 						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
 						textoAtual += "\n\n";
+						textoAtual += "=================================";
+						this.jTextArea2.setText(textoAtual);
 					}
 				}
 			}
@@ -669,11 +709,15 @@ public class FormPrincipal extends javax.swing.JFrame {
 						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
 						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
 								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
-						textoAtual += "Itens: \n";
+						textoAtual += "\nItens: \n";
 						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
 						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\nNome: " + ((Cartao)arrv[i].getTipoPgto()).getNome();
+						textoAtual += "\nNúmero: " + ((Cartao)arrv[i].getTipoPgto()).getNumero();
 						textoAtual += "\n\n";
+						textoAtual += "=================================";
+						this.jTextArea2.setText(textoAtual);
 					}
 				}
 			}
@@ -688,11 +732,15 @@ public class FormPrincipal extends javax.swing.JFrame {
 						textoAtual += " Cliente: " + arrv[i].getCliente().getNome();
 						textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
 								+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
-						textoAtual += "Itens: \n";
+						textoAtual += "\nItens: \n";
 						textoAtual += "\nN | Cod | Descrição | Valor U. | Qtde | Total\n";
 						textoAtual += "\nTotal: R$" + arrv[i].calcularTotal();
 						textoAtual += "\nMétodo de pagamento: " + arrv[i].getTipoPgto().getTipoPagamento();
+						textoAtual += "\nEmissor: " + ((Cheque)arrv[i].getTipoPgto()).getNomeEmissor();
+						textoAtual += "\nNúmero: " + ((Cheque)arrv[i].getTipoPgto()).getNumeroCheque();
 						textoAtual += "\n\n";
+						textoAtual += "=================================";
+						this.jTextArea2.setText(textoAtual);
 					}
 				}
 			}
@@ -701,8 +749,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 		default:
 			this.jTextArea2.setText("Método de pagamento inválido.");
 			break;
-		}
-		this.jTextArea2.setText(textoAtual);
+		}	
 	}// GEN-LAST:event_menuVendasSimplesActionPerformed
 
 	private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSalvarActionPerformed
