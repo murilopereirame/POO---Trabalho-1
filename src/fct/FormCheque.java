@@ -139,6 +139,7 @@ public class FormCheque extends javax.swing.JDialog {
         c.setNumeroCheque(txtNumero.getText());
         c.setTipoPagamento("Cheque");
         c.exibirDados();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
