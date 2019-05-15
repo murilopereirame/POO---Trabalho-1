@@ -364,9 +364,10 @@ public class FormPrincipal extends javax.swing.JFrame {
 		String textoAtual = "========Produto código: " + pCode + "========\n";
 		for (int i = 0; i < arrpn.length; i++) {
 			if (arrpn[i] != null) {
-				if (arrpn[i].getCodigo().equals(pCode)) {
+				if (arrpn[i].getCodigo().toUpperCase().equals(pCode.toUpperCase())) {
 					textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
 					textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
+					textoAtual += "Tipo: Nacional\n";
 					textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
 					textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
 					textoAtual += "============================";
@@ -377,9 +378,10 @@ public class FormPrincipal extends javax.swing.JFrame {
 		}
 		for (int i = 0; i < arrpi.length; i++) {
 			if (arrpi[i] != null) {
-				if (arrpi[i].getCodigo().equals(pCode)) {
+				if (arrpi[i].getCodigo().toUpperCase().equals(pCode.toUpperCase())) {
 					textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
 					textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
+					textoAtual += "Tipo: Importado\n";
 					textoAtual += "Imposto: " + arrpi[i].getTaxaImposto() + "\n";
 					textoAtual += "Taxa importação: " + arrpi[i].getTaxaImportacao() + "\n";
 					textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
@@ -634,7 +636,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 		String textoAtual = "====Venda código: " + vendasCod + " ====\n";
 		for (int i = 0; i < arrv.length; i++) {
 			if (arrv[i] != null) {
-				if (arrv[i].getNumero().equals(vendasCod)) {
+				if (arrv[i].getNumero().toUpperCase().equals(vendasCod.toUpperCase())) {
 					textoAtual += "Venda Nº: " + arrv[i].getNumero();
 					textoAtual += " Data: " + arrv[i].getData().get(Calendar.DAY_OF_MONTH) + "/"
 							+ arrv[i].getData().get(Calendar.MONTH) + "/" + arrv[i].getData().get(Calendar.YEAR);
