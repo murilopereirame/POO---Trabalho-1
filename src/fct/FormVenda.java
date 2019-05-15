@@ -321,6 +321,7 @@ public class FormVenda extends javax.swing.JDialog {
             din2.setVisible(true);
             v.setTipoPgto(din);
         }
+        dispose();
         
         
     }//GEN-LAST:event_btnRegistrarActionPerformed

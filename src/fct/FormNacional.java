@@ -57,7 +57,7 @@ public class FormNacional extends javax.swing.JDialog {
         jLabel3.setText("Descrição:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setText("Valor (R$):");
+        jLabel4.setText("Valor: R$");
 
         txtCodigo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class FormNacional extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel5.setText("Impostos(%):");
+        jLabel5.setText("Impostos: R$");
 
         vleImposto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         vleImposto.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));

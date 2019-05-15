@@ -140,6 +140,7 @@ public class FormCartao extends javax.swing.JDialog {
         c.setNumero(txtNumero.getText());
         c.setTipoPagamento("Cartão");
         c.exibirDados();
+        dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
