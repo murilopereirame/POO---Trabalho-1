@@ -1,8 +1,9 @@
 package fct;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Venda {
+public class Venda implements Serializable {
 	private String numero;
 	private Item[]itens;
 	private TipoPagamento tipoPgto;

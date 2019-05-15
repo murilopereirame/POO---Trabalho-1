@@ -1,5 +1,7 @@
 package fct;
 
+import java.io.Serializable;
+
 public class ProdutoNacional extends Produto{
 	private float taxaImposto;
 	

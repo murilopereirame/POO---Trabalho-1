@@ -1,6 +1,8 @@
 package fct;
 
-public abstract class TipoPagamento {
+import java.io.Serializable;
+
+public abstract class TipoPagamento{
 	private String tipoPagamento;
 	
 	public void setTipoPagamento(String tip) {
