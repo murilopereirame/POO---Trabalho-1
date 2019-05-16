@@ -69,7 +69,7 @@ public class FormNacional extends javax.swing.JDialog {
         txtDescricao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         vleValor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        vleValor.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));
+        vleValor.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), null, Float.valueOf(1.0f)));
 
         btnOK.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         btnOK.setText("OK");
@@ -83,7 +83,7 @@ public class FormNacional extends javax.swing.JDialog {
         jLabel5.setText("Impostos: R$");
 
         vleImposto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        vleImposto.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), null, null, Float.valueOf(1.0f)));
+        vleImposto.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(0.0f), Float.valueOf(0.0f), null, Float.valueOf(1.0f)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
