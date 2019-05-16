@@ -388,8 +388,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 					textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
 					textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
 					textoAtual += "Tipo: Importado\n";
-					textoAtual += "Imposto: " + arrpi[i].getTaxaImposto() + "\n";
-					textoAtual += "Taxa importação: " + arrpi[i].getTaxaImportacao() + "\n";
+					textoAtual += "Imposto R$: " + arrpi[i].getTaxaImposto() + "\n";
+					textoAtual += "Taxa importação R$: " + arrpi[i].getTaxaImportacao() + "\n";
 					textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
 					textoAtual += "============================";
 					this.jTextArea2.setText(textoAtual);
