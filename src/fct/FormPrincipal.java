@@ -308,7 +308,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void menuSobreActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSobreActionPerformed
-		JOptionPane.showMessageDialog(null, "Desenvolvido por:");
+		JOptionPane.showMessageDialog(null, "Desenvolvido por:\nMurilo Pereira\nGustavo Marciel\nWillian Sotocorno");
 	}// GEN-LAST:event_menuSobreActionPerformed
 
 	private void menuClienteActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuClienteActionPerformed
