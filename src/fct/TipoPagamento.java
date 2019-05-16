@@ -2,7 +2,7 @@ package fct;
 
 import java.io.Serializable;
 
-public abstract class TipoPagamento{
+public abstract class TipoPagamento implements Serializable{
 	private String tipoPagamento;
 	
 	public void setTipoPagamento(String tip) {

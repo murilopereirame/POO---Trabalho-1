@@ -584,6 +584,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			if (arrpn[i] != null) {
 				textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
 				textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
+				textoAtual += "Tipo: Nacional\n";
 				textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
 				textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
 			}
@@ -594,6 +595,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			if (arrpi[i] != null) {
 				textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
 				textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
+				textoAtual += "Tipo: Importado\n";
 				textoAtual += "Imposto: R$" + arrpi[i].getTaxaImposto() + "\n";
 				textoAtual += "Taxa importação: R$" + arrpi[i].getTaxaImportacao() + "\n";
 				textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
@@ -630,7 +632,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			}
 		}
 		textoAtual += "\nValor gerado com vendas: R$" + total;
-		textoAtual += "==============================";
+		textoAtual += "\n==============================";
 		this.jTextArea2.setText(textoAtual);
 	}// GEN-LAST:event_menuVendasGeralActionPerformed
 
@@ -759,29 +761,32 @@ public class FormPrincipal extends javax.swing.JFrame {
 	private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSalvarActionPerformed
 		try {
 			// Salvar
-			FileOutputStream fOutStream = new FileOutputStream("pn.dat");
+			FileOutputStream fOutStream = new FileOutputStream("data.dat");
 			ObjectOutputStream objOutput = new ObjectOutputStream(fOutStream);
 			objOutput.writeObject(arrpn);
+			objOutput.writeObject(arrpi);
 			objOutput.writeObject(arrc);
+			objOutput.writeObject(arrv);
 			objOutput.close();
-
+			JOptionPane.showMessageDialog(null, "Dados salvos com Sucesso!");
 		} catch (IOException erro) {
-			System.out.printf("Erro ao salvar arquivo");
+			System.out.printf("Erro ao salvar arquivo " + erro);
 		}
 	}// GEN-LAST:event_menuSalvarActionPerformed
 
 	private void menuCarregarActionPerformed(java.awt.event.ActionEvent evt){// GEN-FIRST:event_menuCarregarActionPerformed
 		// Carregar
 		try {
-			FileInputStream fileInputS = new FileInputStream("pn.dat");
+			FileInputStream fileInputS = new FileInputStream("data.dat");
 			ObjectInputStream objInputS = new ObjectInputStream(fileInputS);
 			arrpn = (ProdutoNacional[]) objInputS.readObject();
-			arrc = (Cliente[]) objInputS.readObject();
+			arrpi = (ProdutoImportado[]) objInputS.readObject();            
+            arrc = (Cliente[]) objInputS.readObject();
+            arrv = (Venda[]) objInputS.readObject();
 			objInputS.close();
-			System.out.println(arrpn[0].getDescricao());
-			System.out.println(arrc[0].getNome());
+            JOptionPane.showMessageDialog(null, "Dados carregados com Sucesso!");
 		} catch (Exception erro) {
-			System.out.printf("Erro ao carregar arquivo");
+			System.out.printf("Erro ao carregar arquivo" + erro);
 		}
 
 	}// GEN-LAST:event_menuCarregarActionPerformed

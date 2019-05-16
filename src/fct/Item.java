@@ -1,6 +1,8 @@
 package fct;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable{
 	private int num;
 	private String codigoProduto;
 	private String descricao;

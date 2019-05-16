@@ -2,7 +2,7 @@ package fct;
 
 import java.io.Serializable;
 
-public abstract class Produto  implements Serializable {
+public abstract class Produto implements Serializable {
 	private String codigo;
 	private String descricao;
 	private float valor;
