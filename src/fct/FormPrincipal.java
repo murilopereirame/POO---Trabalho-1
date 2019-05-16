@@ -761,34 +761,42 @@ public class FormPrincipal extends javax.swing.JFrame {
 	private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSalvarActionPerformed
 		try {
 			// Salvar
-                        int dialogBotao = JOptionPane.YES_NO_OPTION;
-                        int dialogEscolha = JOptionPane.showConfirmDialog (null, "Caso já haja um arquivo salvo, os dados serão sobrescritos. Deseja continuar?","Aviso",dialogBotao);
-                        if(dialogEscolha == JOptionPane.YES_OPTION){
-			FileOutputStream fOutStream = new FileOutputStream("data.dat");
-			ObjectOutputStream objOutput = new ObjectOutputStream(fOutStream);
-			objOutput.writeObject(arrpn);
-			objOutput.writeObject(arrpi);
-			objOutput.writeObject(arrc);
-			objOutput.writeObject(arrv);
-			objOutput.close();
-			JOptionPane.showMessageDialog(null, "Dados salvos com Sucesso!");
-                        }
+			int dialogBotao = JOptionPane.YES_NO_OPTION;
+			int dialogEscolha = JOptionPane.showConfirmDialog(null,
+					"Caso já haja um arquivo salvo, os dados serão sobrescritos. Deseja continuar?", "Aviso",
+					dialogBotao);
+			if (dialogEscolha == JOptionPane.YES_OPTION) {
+				FileOutputStream fOutStream = new FileOutputStream("data.dat");
+				ObjectOutputStream objOutput = new ObjectOutputStream(fOutStream);
+				objOutput.writeObject(arrpn);
+				objOutput.writeObject(arrpi);
+				objOutput.writeObject(arrc);
+				objOutput.writeObject(arrv);
+				objOutput.close();
+				JOptionPane.showMessageDialog(null, "Dados salvos com Sucesso!");
+			}
 		} catch (IOException erro) {
 			System.out.printf("Erro ao salvar arquivo " + erro);
 		}
 	}// GEN-LAST:event_menuSalvarActionPerformed
 
-	private void menuCarregarActionPerformed(java.awt.event.ActionEvent evt){// GEN-FIRST:event_menuCarregarActionPerformed
+	private void menuCarregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuCarregarActionPerformed
 		// Carregar
 		try {
-			FileInputStream fileInputS = new FileInputStream("data.dat");
-			ObjectInputStream objInputS = new ObjectInputStream(fileInputS);
-			arrpn = (ProdutoNacional[]) objInputS.readObject();
-			arrpi = (ProdutoImportado[]) objInputS.readObject();            
-            arrc = (Cliente[]) objInputS.readObject();
-            arrv = (Venda[]) objInputS.readObject();
-			objInputS.close();
-            JOptionPane.showMessageDialog(null, "Dados carregados com Sucesso!");
+			int dialogBotao = JOptionPane.YES_NO_OPTION;
+			int dialogEscolha = JOptionPane.showConfirmDialog(null,
+					"Os dados já adicionados serão sobrescritos. Deseja continuar?", "Aviso",
+					dialogBotao);
+			if (dialogEscolha == JOptionPane.YES_OPTION) {
+				FileInputStream fileInputS = new FileInputStream("data.dat");
+				ObjectInputStream objInputS = new ObjectInputStream(fileInputS);
+				arrpn = (ProdutoNacional[]) objInputS.readObject();
+				arrpi = (ProdutoImportado[]) objInputS.readObject();
+				arrc = (Cliente[]) objInputS.readObject();
+				arrv = (Venda[]) objInputS.readObject();
+				objInputS.close();
+				JOptionPane.showMessageDialog(null, "Dados carregados com Sucesso!");
+			}
 		} catch (Exception erro) {
 			System.out.printf("Erro ao carregar arquivo" + erro);
 		}
