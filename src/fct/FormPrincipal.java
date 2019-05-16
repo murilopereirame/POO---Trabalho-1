@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Willian Sotocorno || Murilo Pereira
+ * @author Willian Sotocorno || Murilo Pereira || Gustavo Oliveira
  */
 public class FormPrincipal extends javax.swing.JFrame {
 
@@ -761,6 +761,9 @@ public class FormPrincipal extends javax.swing.JFrame {
 	private void menuSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuSalvarActionPerformed
 		try {
 			// Salvar
+                        int dialogBotao = JOptionPane.YES_NO_OPTION;
+                        int dialogEscolha = JOptionPane.showConfirmDialog (null, "Caso já haja um arquivo salvo, os dados serão sobrescritos. Deseja continuar?","Aviso",dialogBotao);
+                        if(dialogEscolha == JOptionPane.YES_OPTION){
 			FileOutputStream fOutStream = new FileOutputStream("data.dat");
 			ObjectOutputStream objOutput = new ObjectOutputStream(fOutStream);
 			objOutput.writeObject(arrpn);
@@ -769,6 +772,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			objOutput.writeObject(arrv);
 			objOutput.close();
 			JOptionPane.showMessageDialog(null, "Dados salvos com Sucesso!");
+                        }
 		} catch (IOException erro) {
 			System.out.printf("Erro ao salvar arquivo " + erro);
 		}
