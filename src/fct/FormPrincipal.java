@@ -761,7 +761,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, "Dados salvos com Sucesso!");
 			}
 		} catch (IOException erro) {
-			System.out.printf("Erro ao salvar arquivo " + erro);
+			JOptionPane.showMessageDialog(null, "Erro ao carregar arquivo.");
 		}
 	}// GEN-LAST:event_menuSalvarActionPerformed
 
@@ -781,7 +781,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, "Dados carregados com Sucesso!");
 			}
 		} catch (Exception erro) {
-			System.out.printf("Erro ao carregar arquivo" + erro);
+			JOptionPane.showMessageDialog(null, "Erro ao carregar arquivo.");
 		}
 
 	}// GEN-LAST:event_menuCarregarActionPerformed
