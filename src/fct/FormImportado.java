@@ -17,10 +17,10 @@ public class FormImportado extends javax.swing.JDialog {
     /**
      * Creates new form FormInternacional
      */
-    public FormImportado(java.awt.Frame parent, boolean modal, ProdutoImportado i) {
+    public FormImportado(java.awt.Frame parent, boolean modal, Produto i) {
         super(parent, modal);
         initComponents();
-        this.i = i;
+        this.i = (ProdutoImportado)i;
     }
 
     /**

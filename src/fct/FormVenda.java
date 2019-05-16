@@ -16,8 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class FormVenda extends javax.swing.JDialog {
     private static Cliente[] c;
-    private static ProdutoNacional[] pn;
-    private static ProdutoImportado[] pi;
+    private static Produto[] p;
     private int posVV = 0;
     private Venda v;
     private int maxItens = 15;
@@ -28,13 +27,12 @@ public class FormVenda extends javax.swing.JDialog {
      */
     //Aqui tem que setar o array de clientes local de acordo com o array
     //Passado no construtor.
-    public FormVenda(java.awt.Frame parent, boolean modal, Venda v, Cliente[] c, ProdutoNacional[] pn, ProdutoImportado[] pi, int pos) {
+    public FormVenda(java.awt.Frame parent, boolean modal, Venda v, Cliente[] c, Produto[] p, int pos) {
         super(parent, modal);
         initComponents();
         this.v = v;
         this.c = c;
-        this.pn = pn;
-        this.pi = pi;
+        this.p = p;
         this.posVV = pos;
         this.jTextArea1.setText("Cod. | Descrição | Valor U. | Qtde. | Total");
     }   
@@ -329,26 +327,14 @@ public class FormVenda extends javax.swing.JDialog {
     	Item it = null;    	
     	int i = 0;
     	    	    	
-	    while(pi[i] != null) {
-	    	if(pi[i].getCodigo().equals(txtCodigo.getText())) {
-	    		it = new Item(Integer.parseInt(txtCodigo.getText()), pi[i]);
+	    while(p[i] != null) {
+	    	if(p[i].getCodigo().equals(txtCodigo.getText())) {
+	    		it = new Item(Integer.parseInt(txtCodigo.getText()), p[i]);
 	    		break;
 	    	}
 	    	else
 	    		i++;
 	    }	    	   
-	    
-	    if(it == null) {
-		    i = 0;
-		    while(pn[i] != null) {
-		    	if(pn[i].getCodigo().equals(txtCodigo.getText())) {		    		
-		    		it = new Item(Integer.parseInt(txtCodigo.getText()), pn[i]);
-		    		break;
-		    	}
-		    	else
-		    		i++;
-		    }
-	    }
 	    
 	    if(it == null)
 	    	JOptionPane.showMessageDialog(this, "Código inválido.");
@@ -392,7 +378,7 @@ public class FormVenda extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20), c,pn,pi, 0);
+                FormVenda dialog = new FormVenda(new javax.swing.JFrame(), true, new Venda(20), c,p, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

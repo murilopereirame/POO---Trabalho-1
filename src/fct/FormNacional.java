@@ -16,10 +16,10 @@ public class FormNacional extends javax.swing.JDialog {
     /**
      * Creates new form FormNacional
      */
-    public FormNacional(java.awt.Frame parent, boolean modal, ProdutoNacional n) {
+    public FormNacional(java.awt.Frame parent, boolean modal, Produto n) {
         super(parent, modal);
         initComponents();
-        this.n = n;
+        this.n = (ProdutoNacional)n;
         
     }
 

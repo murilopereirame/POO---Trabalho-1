@@ -23,8 +23,8 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	// Declaração dos vetoroes para armazenar Clientes e Produtos.
 	private Cliente[] arrc = new Cliente[20];
-	private ProdutoNacional[] arrpn = new ProdutoNacional[50];
-	private ProdutoImportado[] arrpi = new ProdutoImportado[30];
+	// private ProdutoNacional[] arrpn = new ProdutoNacional[50];
+	private Produto[] arrp = new Produto[30];
 	private Venda[] arrv = new Venda[30];
 
 	/**
@@ -325,11 +325,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	private void menuNacionalActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuNacionalActionPerformed
 		int i = 0;
-		while (arrpn[i] != null) {
+		while (arrp[i] != null) {
 			i++;
 		}
-		arrpn[i] = new ProdutoNacional();
-		FormNacional form = new FormNacional(this, true, arrpn[i]);
+		arrp[i] = new ProdutoNacional();
+		FormNacional form = new FormNacional(this, true, arrp[i]);
 		form.setLocationRelativeTo(null);
 		form.setResizable(false);
 		form.setVisible(true);
@@ -337,11 +337,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	private void menuImportadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_menuImportadoActionPerformed
 		int i = 0;
-		while (arrpi[i] != null) {
+		while (arrp[i] != null) {
 			i++;
 		}
-		arrpi[i] = new ProdutoImportado();
-		FormImportado form = new FormImportado(this, true, arrpi[i]);
+		arrp[i] = new ProdutoImportado();
+		FormImportado form = new FormImportado(this, true, arrp[i]);
 		form.setLocationRelativeTo(null);
 		form.setResizable(false);
 		form.setVisible(true);
@@ -368,29 +368,20 @@ public class FormPrincipal extends javax.swing.JFrame {
 		this.jTextArea2.setText("");
 		String pCode = JOptionPane.showInputDialog("Insira o código do produto: ");
 		String textoAtual = "========Produto código: " + pCode + "========\n";
-		for (int i = 0; i < arrpn.length; i++) {
-			if (arrpn[i] != null) {
-				if (arrpn[i].getCodigo().toUpperCase().equals(pCode.toUpperCase())) {
-					textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
-					textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
-					textoAtual += "Tipo: Nacional\n";
-					textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
-					textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
-					textoAtual += "============================";
-					this.jTextArea2.setText(textoAtual);
-					return;
-				}
-			}
-		}
-		for (int i = 0; i < arrpi.length; i++) {
-			if (arrpi[i] != null) {
-				if (arrpi[i].getCodigo().toUpperCase().equals(pCode.toUpperCase())) {
-					textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
-					textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
-					textoAtual += "Tipo: Importado\n";
-					textoAtual += "Imposto R$: " + arrpi[i].getTaxaImposto() + "\n";
-					textoAtual += "Taxa importação R$: " + arrpi[i].getTaxaImportacao() + "\n";
-					textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
+		for (int i = 0; i < arrp.length; i++) {
+			if (arrp[i] != null) {
+				if (arrp[i].getCodigo().toUpperCase().equals(pCode.toUpperCase())) {
+					textoAtual += "Código: " + arrp[i].getCodigo() + "\n";
+					textoAtual += "Descrição: " + arrp[i].getDescricao() + "\n";
+					if (arrp[i] instanceof ProdutoNacional) {
+						textoAtual += "Tipo: Nacional\n";
+						textoAtual += "Imposto: R$" + ((ProdutoNacional) arrp[i]).getTaxaImposto() + "\n";
+					} else {
+						textoAtual += "Tipo: Importado\n";
+						textoAtual += "Taxa importação R$: " + ((ProdutoImportado) arrp[i]).getTaxaImportacao() + "\n";
+						textoAtual += "Imposto: R$" + ((ProdutoImportado) arrp[i]).getTaxaImposto() + "\n";
+					}
+					textoAtual += "Valor: R$" + arrp[i].getValor() + "\n\n";
 					textoAtual += "============================";
 					this.jTextArea2.setText(textoAtual);
 					return;
@@ -516,7 +507,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			i++;
 		}
 		arrv[i] = new Venda(15);
-		FormVenda form = new FormVenda(this, true, arrv[i], arrc, arrpn, arrpi, i);
+		FormVenda form = new FormVenda(this, true, arrv[i], arrc, arrp, i);
 		form.setLocationRelativeTo(null);
 		form.setResizable(false);
 		form.setVisible(true);
@@ -579,29 +570,25 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	private void menuProdutoGeralActionPerformed(java.awt.event.ActionEvent evt) {
 		this.jTextArea2.setText("");
-		String textoAtual = "====Produtos nacionais====\n";
-		for (int i = 0; i < arrpn.length; i++) {
-			if (arrpn[i] != null) {
-				textoAtual += "Código: " + arrpn[i].getCodigo() + "\n";
-				textoAtual += "Descrição: " + arrpn[i].getDescricao() + "\n";
-				textoAtual += "Tipo: Nacional\n";
-				textoAtual += "Imposto: R$" + arrpn[i].getTaxaImposto() + "\n";
-				textoAtual += "Valor: R$" + arrpn[i].getValor() + "\n\n";
+		String textoAtual = "====Produtos====\n";
+		for (int i = 0; i < arrp.length; i++) {
+			if (arrp[i] != null) {
+				textoAtual += "Código: " + arrp[i].getCodigo() + "\n";
+				textoAtual += "Descrição: " + arrp[i].getDescricao() + "\n";
+				if (arrp[i] instanceof ProdutoNacional) {
+					textoAtual += "Tipo: Nacional\n";
+					textoAtual += "Imposto: R$" + ((ProdutoNacional)arrp[i]).getTaxaImposto() + "\n";
+				}
+				else {
+					textoAtual += "Tipo: Importado\n";
+					textoAtual += "Imposto: R$" + ((ProdutoImportado)arrp[i]).getTaxaImposto() + "\n";
+					textoAtual += "Taxa importação: R$" + ((ProdutoImportado)arrp[i]).getTaxaImportacao() + "\n";
+				}
+				textoAtual += "Valor: R$" + arrp[i].getValor() + "\n\n";
 			}
 		}
 		textoAtual += "============================";
-		textoAtual += "\n========Produtos Importados=======\n";
-		for (int i = 0; i < arrpi.length; i++) {
-			if (arrpi[i] != null) {
-				textoAtual += "Código: " + arrpi[i].getCodigo() + "\n";
-				textoAtual += "Descrição: " + arrpi[i].getDescricao() + "\n";
-				textoAtual += "Tipo: Importado\n";
-				textoAtual += "Imposto: R$" + arrpi[i].getTaxaImposto() + "\n";
-				textoAtual += "Taxa importação: R$" + arrpi[i].getTaxaImportacao() + "\n";
-				textoAtual += "Valor: R$" + arrpi[i].getValor() + "\n\n";
-			}
-		}
-		textoAtual += "============================";
+
 		this.jTextArea2.setText(textoAtual);
 	}
 
@@ -768,8 +755,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			if (dialogEscolha == JOptionPane.YES_OPTION) {
 				FileOutputStream fOutStream = new FileOutputStream("data.dat");
 				ObjectOutputStream objOutput = new ObjectOutputStream(fOutStream);
-				objOutput.writeObject(arrpn);
-				objOutput.writeObject(arrpi);
+				objOutput.writeObject(arrp);
 				objOutput.writeObject(arrc);
 				objOutput.writeObject(arrv);
 				objOutput.close();
@@ -785,13 +771,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 		try {
 			int dialogBotao = JOptionPane.YES_NO_OPTION;
 			int dialogEscolha = JOptionPane.showConfirmDialog(null,
-					"Os dados já adicionados serão sobrescritos. Deseja continuar?", "Aviso",
-					dialogBotao);
+					"Os dados já adicionados serão sobrescritos. Deseja continuar?", "Aviso", dialogBotao);
 			if (dialogEscolha == JOptionPane.YES_OPTION) {
 				FileInputStream fileInputS = new FileInputStream("data.dat");
 				ObjectInputStream objInputS = new ObjectInputStream(fileInputS);
-				arrpn = (ProdutoNacional[]) objInputS.readObject();
-				arrpi = (ProdutoImportado[]) objInputS.readObject();
+				arrp = (ProdutoNacional[]) objInputS.readObject();
 				arrc = (Cliente[]) objInputS.readObject();
 				arrv = (Venda[]) objInputS.readObject();
 				objInputS.close();
