@@ -23,7 +23,6 @@ public class FormPrincipal extends javax.swing.JFrame {
 
 	// Declaração dos vetoroes para armazenar Clientes e Produtos.
 	private Cliente[] arrc = new Cliente[20];
-	// private ProdutoNacional[] arrpn = new ProdutoNacional[50];
 	private Produto[] arrp = new Produto[30];
 	private Venda[] arrv = new Venda[30];
 
@@ -775,7 +774,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 			if (dialogEscolha == JOptionPane.YES_OPTION) {
 				FileInputStream fileInputS = new FileInputStream("data.dat");
 				ObjectInputStream objInputS = new ObjectInputStream(fileInputS);
-				arrp = (ProdutoNacional[]) objInputS.readObject();
+				arrp = (Produto[]) objInputS.readObject();
 				arrc = (Cliente[]) objInputS.readObject();
 				arrv = (Venda[]) objInputS.readObject();
 				objInputS.close();
